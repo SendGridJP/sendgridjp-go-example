@@ -24,3 +24,5 @@ _testmain.go
 
 github.com
 pkg
+config.json
+bin
