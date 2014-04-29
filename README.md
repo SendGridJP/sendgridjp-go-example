@@ -31,4 +31,3 @@ SENDGRID_PASSWORD:SendGridのパスワードを指定してください。
 TOS:宛先をカンマ区切りで指定してください。  
 FROM:送信元アドレスを指定してください。  
 
-
