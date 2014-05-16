@@ -8,23 +8,21 @@ sendgridjp-go-example
 ```bash
 git clone http://github.com/sendgridjp/sendgridjp-go-example.git
 cd sendgridjp-go-example
-cp config.json.example config.json
-# config.jsonファイルを編集してください
+cp .env.example .env
+# .envファイルを編集してください
 go get github.com/sendgrid/sendgrid-go
 go install main
 ./bin/main
 ```
 
-## config.jsonファイルの編集
-config.jsonファイルは以下のような内容になっています。
+## .envファイルの編集
+.envファイルは以下のような内容になっています。
 
-```json
-{
-  "SENDGRID_USERNAME": "your_username",
-  "SENDGRID_PASSWORD": "your_password",
-  "TOS": ["you@youremail.com","friend1@friendemail.com","friend2@friendemail.com"],
-  "FROM": "you@youremail.com",
-}
+```bash
+SENDGRID_USERNAME=your_username
+SENDGRID_PASSWORD=your_password
+TOS=you@youremail.com,friend1@friendemail.com,friend2@friendemail.com
+FROM=you@youremail.com
 ```
 SENDGRID_USERNAME:SendGridのユーザ名を指定してください。  
 SENDGRID_PASSWORD:SendGridのパスワードを指定してください。  
