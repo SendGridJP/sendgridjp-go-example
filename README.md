@@ -11,6 +11,7 @@ cd sendgridjp-go-example
 cp .env.example .env
 # .envファイルを編集してください
 go get github.com/sendgrid/sendgrid-go
+go get github.com/joho/godotenv
 go install main
 ./bin/main
 ```
