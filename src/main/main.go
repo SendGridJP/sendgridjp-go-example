@@ -3,10 +3,10 @@ package main
 import (
     "os"
     "fmt"
+    "strings"
     "log"
-    "io/ioutil"
     "github.com/sendgrid/sendgrid-go"
-    "encoding/json"
+    "github.com/joho/godotenv"
 )
 
 type T struct {
@@ -18,20 +18,21 @@ type T struct {
 
 func main() {
 
-    b, err_read := ioutil.ReadFile("config.json")
-    if err_read != nil { panic(err_read) }
-
-    t := T{}
-    err := json.Unmarshal(b, &t)
-    if err != nil {
-        log.Fatalf("error: %v", err)
+    err_read := godotenv.Load()
+    if err_read != nil {
+        log.Fatalf("error: %v", err_read)
     }
+
+    SENDGRID_USERNAME := os.Getenv("SENDGRID_USERNAME")
+    SENDGRID_PASSWORD := os.Getenv("SENDGRID_PASSWORD")
+    TOS := strings.Split(os.Getenv("TOS"), ",")
+    FROM := os.Getenv("FROM")
 
     email := sendgrid.NewMail()
-    for _, to := range t.TOS {
+    for _, to := range TOS {
         email.AddTo(to)
     }
-    email.SetFrom(t.FROM)
+    email.SetFrom(FROM)
     email.SetFromName("送信者名")
     email.SetSubject("[sendgrid-go-example] フクロウのお名前はfullnameさん")
     email.SetText("familyname さんは何をしていますか？\r\n 彼はplaceにいます。")
@@ -48,7 +49,7 @@ func main() {
     email.AddAttachment("gif.gif", file)
     defer file.Close()
 
-    sg := sendgrid.NewSendGridClient(t.SENDGRID_USERNAME, t.SENDGRID_PASSWORD)
+    sg := sendgrid.NewSendGridClient(SENDGRID_USERNAME, SENDGRID_PASSWORD)
     if r := sg.Send(email); r == nil {
         fmt.Println("Email sent!")
     } else {
