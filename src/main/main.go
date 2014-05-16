@@ -1,6 +1,7 @@
 package main
 
 import (
+    "os"
     "fmt"
     "log"
     "io/ioutil"
@@ -30,11 +31,11 @@ func main() {
     for _, to := range t.TOS {
         email.AddTo(to)
     }
-    email.AddFrom(t.FROM)
-    email.AddFromName("送信者名")
-    email.AddSubject("[sendgrid-go-example] フクロウのお名前はfullnameさん")
-    email.AddText("familyname さんは何をしていますか？\r\n 彼はplaceにいます。")
-    email.AddHTML("<strong> familyname さんは何をしていますか？</strong><br />彼はplaceにいます。")
+    email.SetFrom(t.FROM)
+    email.SetFromName("送信者名")
+    email.SetSubject("[sendgrid-go-example] フクロウのお名前はfullnameさん")
+    email.SetText("familyname さんは何をしていますか？\r\n 彼はplaceにいます。")
+    email.SetHTML("<strong> familyname さんは何をしていますか？</strong><br />彼はplaceにいます。")
     sub := make(map[string][]string)
     sub["fullname"] = []string{"田中 太郎", "佐藤 次郎", "鈴木 三郎"}
     sub["familyname"] = []string{"田中", "佐藤", "鈴木"}
@@ -43,7 +44,9 @@ func main() {
     email.AddSection("office", "中野")
     email.AddSection("home", "目黒")
     email.AddCategory("カテゴリ1") 
-    email.AddAttachment("./gif.gif")
+    file, _ := os.OpenFile("./gif.gif", os.O_RDONLY, 0600)
+    email.AddAttachment("gif.gif", file)
+    defer file.Close()
 
     sg := sendgrid.NewSendGridClient(t.SENDGRID_USERNAME, t.SENDGRID_PASSWORD)
     if r := sg.Send(email); r == nil {
