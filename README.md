@@ -2,8 +2,6 @@ sendgridjp-go-example
 =====================
 
 本コードは[SendGrid公式Goライブラリ](https://github.com/sendgrid/sendgrid-go)の利用サンプルです。  
-現在、[smtpapi-go](https://github.com/sendgrid/smtpapi-go)がUnicodeエスケープされていないため、SubstitutionやSectionに日本語を指定した場合文字化けします。  
-日本語が必要な場合smtpapi-goが返すJsonStringをUnicodeエスケープするよう修正して利用してください。  
 
 ## 使い方
 
