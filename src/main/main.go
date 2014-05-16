@@ -9,13 +9,6 @@ import (
     "github.com/joho/godotenv"
 )
 
-type T struct {
-    SENDGRID_USERNAME string
-    SENDGRID_PASSWORD string
-    TOS []string
-    FROM string
-}
-
 func main() {
 
     err_read := godotenv.Load()
