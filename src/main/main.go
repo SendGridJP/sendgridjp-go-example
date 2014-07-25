@@ -37,7 +37,7 @@ func main() {
     email.SetSubstitutions(sub)
     email.AddSection("office", "中野")
     email.AddSection("home", "目黒")
-    email.AddCategory("カテゴリ1") 
+    email.AddCategory("category1") 
     file, _ := os.OpenFile("./gif.gif", os.O_RDONLY, 0600)
     email.AddAttachment("gif.gif", file)
     defer file.Close()
