@@ -22,9 +22,8 @@ func main() {
     FROM := os.Getenv("FROM")
 
     email := sendgrid.NewMail()
-    for _, to := range TOS {
-        email.AddTo(to)
-    }
+    email.SMTPAPIHeader.SetTos(TOS) // 宛先はこちらで指定したものが使用される
+    email.AddTo(FROM)               // 実際には使用されない
     email.SetFrom(FROM)
     email.SetFromName("送信者名")
     email.SetSubject("[sendgrid-go-example] フクロウのお名前はfullnameさん")
@@ -37,7 +36,7 @@ func main() {
     email.SetSubstitutions(sub)
     email.AddSection("office", "中野")
     email.AddSection("home", "目黒")
-    email.AddCategory("category1") 
+    email.AddCategory("category1")
     file, _ := os.OpenFile("./gif.gif", os.O_RDONLY, 0600)
     email.AddAttachment("gif.gif", file)
     defer file.Close()

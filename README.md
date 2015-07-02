@@ -12,8 +12,7 @@ cp .env.example .env
 # .envファイルを編集してください
 go get github.com/sendgrid/sendgrid-go
 go get github.com/joho/godotenv
-go install main
-./bin/main
+go run src/main/main.go 
 ```
 
 ## .envファイルの編集
@@ -29,4 +28,3 @@ SENDGRID_USERNAME:SendGridのユーザ名を指定してください。
 SENDGRID_PASSWORD:SendGridのパスワードを指定してください。  
 TOS:宛先をカンマ区切りで指定してください。  
 FROM:送信元アドレスを指定してください。  
-
