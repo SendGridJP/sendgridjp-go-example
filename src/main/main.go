@@ -23,7 +23,7 @@ func main() {
 
     email := sendgrid.NewMail()
     email.SMTPAPIHeader.SetTos(TOS) // 宛先はこちらで指定したものが使用される
-    email.AddTo(FROM)               // 実際には使用されない
+    email.AddTo(FROM)               // 実際には使用されない。エラー回避のため記載。
     email.SetFrom(FROM)
     email.SetFromName("送信者名")
     email.SetSubject("[sendgrid-go-example] フクロウのお名前はfullnameさん")
