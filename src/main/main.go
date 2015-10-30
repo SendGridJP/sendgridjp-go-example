@@ -16,6 +16,7 @@ func main() {
         log.Fatalf("error: %v", err_read)
     }
 
+
     API_KEY := os.Getenv("API_KEY")
     TOS := strings.Split(os.Getenv("TOS"), ",")
     FROM := os.Getenv("FROM")
