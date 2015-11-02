@@ -16,8 +16,8 @@ func main() {
         log.Fatalf("error: %v", err_read)
     }
 
-    SENDGRID_USERNAME := os.Getenv("SENDGRID_USERNAME")
-    SENDGRID_PASSWORD := os.Getenv("SENDGRID_PASSWORD")
+
+    API_KEY := os.Getenv("API_KEY")
     TOS := strings.Split(os.Getenv("TOS"), ",")
     FROM := os.Getenv("FROM")
 
@@ -41,7 +41,7 @@ func main() {
     email.AddAttachment("gif.gif", file)
     defer file.Close()
 
-    sg := sendgrid.NewSendGridClient(SENDGRID_USERNAME, SENDGRID_PASSWORD)
+    sg := sendgrid.NewSendGridClientWithApiKey(API_KEY)
     if r := sg.Send(email); r == nil {
         fmt.Println("Email sent!")
     } else {
