@@ -6,7 +6,7 @@ sendgridjp-go-example
 ## 使い方
 
 ```bash
-git clone http://github.com/sendgridjp/sendgridjp-go-example.git
+git clone git@github.com:SendGridJP/sendgridjp-go-example.git
 cd sendgridjp-go-example
 cp .env.example .env
 # .envファイルを編集してください
