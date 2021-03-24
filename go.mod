@@ -1,4 +1,4 @@
-module root
+module sendgridjp-go-example
 
 go 1.16
 
