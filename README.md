@@ -6,12 +6,10 @@ sendgridjp-go-example
 ## 使い方
 
 ```bash
-git clone http://github.com/sendgridjp/sendgridjp-go-example.git
+git clone git@github.com:SendGridJP/sendgridjp-go-example.git
 cd sendgridjp-go-example
 cp .env.example .env
 # .envファイルを編集してください
-go get github.com/sendgrid/sendgrid-go
-go get github.com/joho/godotenv
 go run src/main/main.go
 ```
 
@@ -23,6 +21,6 @@ API_KEY=api_key
 TOS=you@youremail.com,friend1@friendemail.com,friend2@friendemail.com
 FROM=you@youremail.com
 ```
-API_KEY:SendGridの[API Key](https://sendgrid.kke.co.jp/docs/User_Manual_JP/Settings/api_keys.html)を指定してください。  
-TOS:宛先をカンマ区切りで指定してください。  
-FROM:送信元アドレスを指定してください。  
+API_KEY：SendGridの[API Key](https://sendgrid.kke.co.jp/docs/User_Manual_JP/Settings/api_keys.html)を指定してください。  
+TOS：宛先をカンマ区切りで指定してください。  
+FROM：送信元アドレスを指定してください。  
